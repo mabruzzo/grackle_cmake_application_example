@@ -1,3 +1,4 @@
 [submodule "external/grackle"]
 	path = external/grackle
 	url = https://github.com/mabruzzo/grackle
+	branch = cmake

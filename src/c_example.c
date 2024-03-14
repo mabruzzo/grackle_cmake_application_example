@@ -1,7 +1,6 @@
 /***********************************************************************
 /
-/ Example executable using libgrackle
-/
+/ This is derived from the example executable included in grackle
 /
 / Copyright (c) 2013, Enzo/Grackle Development Team.
 /
@@ -24,6 +23,11 @@
 
 int main(int argc, char *argv[])
 {
+  if (argc != 2) {
+    fprintf(stderr,
+            "this program needs 1 argument: the path to the grackle_data_file");
+    return 1;
+  }
 
   /*********************************************************************
   / Initial setup of units and chemistry objects.
@@ -65,7 +69,7 @@ int main(int argc, char *argv[])
   grackle_data->dust_chemistry = 1;         // dust processes
   grackle_data->metal_cooling = 1;          // metal cooling on
   grackle_data->UVbackground = 1;           // UV background on
-  grackle_data->grackle_data_file = "../../input/CloudyData_UVB=HM2012.h5"; // data file
+  grackle_data->grackle_data_file = argv[1]; // data file
 
   // Finally, initialize the chemistry object.
   if (initialize_chemistry_data(&my_units) == 0) {
